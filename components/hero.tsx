@@ -19,7 +19,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background pb-0">
       {/* Background Image with Enhanced Visibility and Subtle Animation */}
       <div className="absolute inset-0 z-0">
-        <Image src="/hero-bg.jpg" alt="Futuristic constellation background" fill className="object-cover brightness-110 contrast-110" priority />
+        <Image src="/constellation-team-professional.png" alt="Constellation team professional banner" fill className="object-cover brightness-110 contrast-110" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/25 to-background/35" />
         {/* Subtle constellation animation overlay */}
         <div className="absolute inset-0 animate-constellation-drift opacity-30">
