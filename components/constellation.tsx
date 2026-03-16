@@ -78,7 +78,7 @@ const members: Member[] = [
   },
   {
     id: 10,
-    name: "Mr. Lesly Obiri",
+    name: "Mr. Lesley Obiri",
     role: "Head of Coordination",
     image: "/team-lesly-obiri.jpeg",
     bio: "Orchestrating seamless collaboration and strategic coordination across all initiatives",
@@ -132,8 +132,8 @@ export default function Constellation() {
         <div className="mb-16 rounded-2xl overflow-hidden border border-accent/30 shadow-lg shadow-primary/20">
           <div className="relative h-64 sm:h-80 lg:h-96">
             <Image 
-              src="/constellation-team-professional.png" 
-              alt="Light Constellation Professional Team" 
+              src="/constellation-event-banner.png" 
+              alt="Light Constellation Event Banner" 
               fill 
               className="object-cover" 
             />
@@ -156,7 +156,7 @@ export default function Constellation() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {members.map((member, index) => {
             // Define which members need special adjustment for proper head visibility
-            const specialAlignMembers = [3, 11] // Franklyn (id:3), Elisha (id:11)
+            const specialAlignMembers = [1, 3, 7, 10, 11, 12] // Justice, Franklyn, Derrick, Lesley, Elisha, Stephen
             const useSpecialAlign = specialAlignMembers.includes(member.id)
             
             return (
