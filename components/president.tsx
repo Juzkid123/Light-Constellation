@@ -67,7 +67,7 @@ export default function President() {
                 alt="Moses B Arthur Signature"
                 width={300}
                 height={100}
-                className="object-contain h-full w-auto"
+                className="object-contain h-full w-auto filter brightness-0 invert"
               />
             </div>
           </div>
