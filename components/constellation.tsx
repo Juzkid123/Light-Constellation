@@ -22,21 +22,21 @@ const members: Member[] = [
   },
   {
     id: 2,
-    name: "Mr. Bilchris Oheneba",
+    name: "Mr. Bilchris Ashiangmor Tetteh",
     role: "Head of Social Media",
-    image: "/team-bilchris-oheneba.jpeg",
+    image: "/bilchris.jpeg",
     bio: "Amplifying our message and connecting hearts through authentic storytelling and digital presence",
   },
   {
     id: 3,
     name: "Mr. Franklyn Ofori Baah",
     role: "Head of Recruitment",
-    image: "/team-franklin-ofori.jpeg",
+    image: "/franklyn.jpeg",
     bio: "Building a constellation of brilliant minds, one visionary at a time",
   },
   {
     id: 4,
-    name: "Miss Portia",
+    name: "Miss Portia Naawuo Mwinumbo",
     role: "Head of Organization Committee",
     image: "/team-portia.jpeg",
     bio: "Orchestrating harmony and structure, ensuring every initiative sparkles with precision",
@@ -45,7 +45,7 @@ const members: Member[] = [
     id: 5,
     name: "Miss Gloria Duah",
     role: "Assistant to Head of Organization",
-    image: "/team-gloria-duah.jpeg",
+    image: "/gloria.jpeg",
     bio: "Supporting excellence through dedication and meticulous attention to every detail",
   },
   {
@@ -59,7 +59,7 @@ const members: Member[] = [
     id: 7,
     name: "Mr. Owusu Derrick",
     role: "Assistant to Head of Innovation",
-    image: "/team-owusu-derrick.jpeg",
+    image: "/derrick.png",
     bio: "Fueling creativity and turning bold visions into reality through tireless collaboration",
   },
   {
@@ -80,21 +80,21 @@ const members: Member[] = [
     id: 10,
     name: "Mr. Lesley Obiri",
     role: "Head of Coordination",
-    image: "/team-lesly-obiri.jpeg",
+    image: "/lesley.jpeg",
     bio: "Orchestrating seamless collaboration and strategic coordination across all initiatives",
   },
   {
     id: 11,
     name: "Mr. Elisha Opoku Mensah",
     role: "Assistant to Head of Coordination",
-    image: "/team-elisha-mensah.jpeg",
+    image: "/elisha.png",
     bio: "Supporting excellence through strategic coordination and meticulous execution",
   },
   {
     id: 12,
     name: "Mr. Stephen Ayoma",
     role: "Executive",
-    image: "/team-stephen-ayama.jpeg",
+    image: "/stephen.png",
     bio: "Making a difference by serving our community with passion and purpose",
   },
   {
@@ -108,6 +108,7 @@ const members: Member[] = [
 
 export default function Constellation() {
   const [liked, setLiked] = useState<Set<number>>(new Set())
+  const [brokenImages, setBrokenImages] = useState<Set<number>>(new Set())
 
   const toggleLike = (id: number) => {
     const newLiked = new Set(liked)
@@ -117,6 +118,17 @@ export default function Constellation() {
       newLiked.add(id)
     }
     setLiked(newLiked)
+  }
+
+  const handleImageError = (id: number) => {
+    setBrokenImages((current) => new Set(current).add(id))
+  }
+
+  const getImageSrc = (member: Member) => {
+    if (member.id === 3 && brokenImages.has(3)) {
+      return "/team-franklin-ofori.jpeg"
+    }
+    return member.image || "/placeholder.svg"
   }
 
   return (
@@ -155,9 +167,7 @@ export default function Constellation() {
         {/* Members Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {members.map((member, index) => {
-            // Define which members need special adjustment for proper head visibility
-            const specialAlignMembers = [1, 3, 7, 10, 11, 12] // Justice, Franklyn, Derrick, Lesley, Elisha, Stephen
-            const useSpecialAlign = specialAlignMembers.includes(member.id)
+            const imagePosition = 'center 15%'
             
             return (
             <div
@@ -168,12 +178,14 @@ export default function Constellation() {
               {/* Card */}
               <div className="relative rounded-2xl overflow-hidden border border-accent/30 bg-gradient-to-br from-background to-background/50 hover:border-accent/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2 animate-card-breathe">
                 {/* Image Container */}
-                <div className={`relative overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 ${useSpecialAlign ? 'h-screen max-h-96' : 'h-80'}`}>
+                <div className="relative overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20 h-96">
                   <Image
-                    src={member.image || "/placeholder.svg"}
+                    src={getImageSrc(member)}
                     alt={member.name}
                     fill
-                    className={`object-cover group-hover:scale-110 transition-transform duration-500 ${useSpecialAlign ? 'object-top' : 'object-center'}`}
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    style={{ objectPosition: imagePosition }}
+                    onError={() => handleImageError(member.id)}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                 </div>
