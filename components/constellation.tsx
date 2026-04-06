@@ -52,7 +52,7 @@ const members: Member[] = [
     id: 6,
     name: "Mr. Christopher Felix Cudjoe",
     role: "Head of Innovation",
-    image: "/team-christopher-cudjoe.jpeg",
+    image: "/christopher.jpeg",
     bio: "Pioneering breakthrough ideas that shape the future and challenge the status quo",
   },
   {
@@ -66,7 +66,7 @@ const members: Member[] = [
     id: 8,
     name: "Miss Vida Ayoma",
     role: "General Secretary",
-    image: "/team-vida-ayama.jpeg",
+    image: "/Vida.png",
     bio: "The backbone of our constellation, keeping our vision alive through strategic communication",
   },
   {
@@ -101,7 +101,7 @@ const members: Member[] = [
     id: 13,
     name: "Miss Dorcas Afi Delali Hazel Tofio",
     role: "Executive",
-    image: "/team-dorcas.jpeg",
+    image: "/Dorcas.jpeg",
     bio: "Bringing energy and determination to every initiative we undertake",
   },
 ]
