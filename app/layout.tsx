@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description:
     "Join Light Constellation, an elite mentorship program under Brand MBA. Connect with industry leaders and transform your future.",
   generator: "v0.app",
+  icons: {
+    icon: "/light-logo.png",
+  },
 }
 
 export default function RootLayout({

@@ -38,7 +38,7 @@ const members: Member[] = [
     id: 4,
     name: "Miss Portia Naawuo Mwinumbo",
     role: "Head of Organization Committee",
-    image: "/team-portia.jpeg",
+    image: "/Portia.jpeg",
     bio: "Orchestrating harmony and structure, ensuring every initiative sparkles with precision",
   },
   {
@@ -73,7 +73,7 @@ const members: Member[] = [
     id: 9,
     name: "Mr. Ohene Gyan",
     role: "Assistant Social Media Manager",
-    image: "/team-ohene-gyan.jpeg",
+    image: "/Ohene Gyan.jpeg",
     bio: "Championing integrity and leadership in everything we do",
   },
   {
