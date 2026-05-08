@@ -38,7 +38,7 @@ const members: Member[] = [
     id: 4,
     name: "Miss Portia Naawuo Mwinumbo",
     role: "Head of Organization Committee",
-    image: "/Portia.jpeg",
+    image: "/portia.png",
     bio: "Orchestrating harmony and structure, ensuring every initiative sparkles with precision",
   },
   {
