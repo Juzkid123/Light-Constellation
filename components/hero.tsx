@@ -99,10 +99,7 @@ export default function Hero() {
           <a href="#vision" className="px-8 py-4 rounded-full bg-accent text-primary font-bold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 inline-block animate-glow-pulse">
             Discover the Vision
           </a>
-          <a href="#team" className="px-8 py-4 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-all duration-300">
-            Meet the Team
-          </a>
-          <a href="/join" className="px-8 py-4 rounded-full bg-accent text-primary font-bold hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 inline-block animate-glow-pulse">
+          <a href="/join" className="px-8 py-4 rounded-full border-2 border-accent text-accent font-bold hover:bg-accent/10 transition-all duration-300">
             Join Us
           </a>
         </div>
