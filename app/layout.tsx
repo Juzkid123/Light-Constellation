@@ -22,7 +22,9 @@ export const metadata: Metadata = {
     "Join Light Constellation. Connect with industry leaders and transform your future.",
   generator: "v0.app",
   icons: {
-    icon: "/light-logo.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
 }
 
