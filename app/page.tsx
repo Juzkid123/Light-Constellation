@@ -1,5 +1,3 @@
-"use client"
-
 import Navigation from "@/components/navigation"
 import Hero from "@/components/hero"
 import About from "@/components/about"

@@ -38,7 +38,7 @@ const members: Member[] = [
     id: 4,
     name: "Miss Portia Naawuo Mwinumbo",
     role: "Head of Organization Committee",
-    image: "/portia.png",
+    image: "/portia.webp",
     bio: "Orchestrating harmony and structure, ensuring every initiative sparkles with precision",
   },
   {
@@ -59,14 +59,14 @@ const members: Member[] = [
     id: 7,
     name: "Mr. Owusu Derrick",
     role: "Assistant to Head of Innovation",
-    image: "/derrick.png",
+    image: "/derrick.webp",
     bio: "Fueling creativity and turning bold visions into reality through tireless collaboration",
   },
   {
     id: 8,
     name: "Miss Vida Ayoma",
     role: "General Secretary",
-    image: "/Vida.png",
+    image: "/vida.webp",
     bio: "The backbone of our constellation, keeping our vision alive through strategic communication",
   },
   {
@@ -87,14 +87,14 @@ const members: Member[] = [
     id: 11,
     name: "Mr. Elisha Opoku Mensah",
     role: "Assistant to Head of Coordination",
-    image: "/elisha.png",
+    image: "/elisha.webp",
     bio: "Supporting excellence through strategic coordination and meticulous execution",
   },
   {
     id: 12,
     name: "Mr. Stephen Ayoma",
     role: "Executive",
-    image: "/stephen.png",
+    image: "/stephen.webp",
     bio: "Making a difference by serving our community with passion and purpose",
   },
   {
@@ -147,6 +147,8 @@ export default function Constellation() {
               src="/constellation-event-banner.png" 
               alt="Light Constellation Event Banner" 
               fill 
+              sizes="(min-width: 1024px) 1152px, 100vw"
+              quality={72}
               className="object-cover" 
             />
           </div>
@@ -183,6 +185,8 @@ export default function Constellation() {
                     src={getImageSrc(member)}
                     alt={member.name}
                     fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    quality={70}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ objectPosition: imagePosition }}
                     onError={() => handleImageError(member.id)}

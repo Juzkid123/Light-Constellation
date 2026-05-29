@@ -1,20 +1,29 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [displayedText, setDisplayedText] = useState("")
   const [showCaret, setShowCaret] = useState(true)
+  const frameRef = useRef<number | null>(null)
   const fullText = "Constellation"
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      if (frameRef.current) return
+      const { clientX, clientY } = e
+      frameRef.current = window.requestAnimationFrame(() => {
+        setMousePosition({ x: clientX, y: clientY })
+        frameRef.current = null
+      })
     }
     window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      if (frameRef.current) window.cancelAnimationFrame(frameRef.current)
+    }
   }, [])
 
   useEffect(() => {
@@ -55,7 +64,15 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-background pb-0">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image src="/hero-bg.jpg" alt="Futuristic constellation background" fill className="object-cover brightness-110 contrast-110" priority />
+        <Image
+          src="/hero-bg.jpg"
+          alt="Futuristic constellation background"
+          fill
+          sizes="100vw"
+          quality={74}
+          className="object-cover brightness-110 contrast-110"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-background/15 via-background/25 to-background/35" />
         <div className="absolute inset-0 animate-constellation-drift opacity-30">
           <div className="absolute top-10 left-10 w-2 h-2 bg-accent rounded-full animate-pulse" />

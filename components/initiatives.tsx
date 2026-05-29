@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import Image from "next/image"
 
@@ -105,7 +103,7 @@ export default function Initiatives() {
           <div className="relative z-10">
             <h3 className="text-3xl font-bold text-primary mb-4">Want to Join Light Constellation?</h3>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto font-semibold">
-              Join Light Constellation under Brand MBA — a group of like-minded individuals who dream, dare, and do.
+              Join Light Constellation under Brand MBA - a group of like-minded individuals who dream, dare, and do.
             </p>
 
             {/* CTA Button */}
@@ -116,7 +114,7 @@ export default function Initiatives() {
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-accent text-background font-bold text-lg hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 animate-pulse-subtle"
             >
               <span>Join Waitlist Group</span>
-              <span className="text-xl">→</span>
+              <span className="text-xl">-&gt;</span>
             </a>
           </div>
 
@@ -133,6 +131,8 @@ export default function Initiatives() {
                     src="/book-entrepreneurs-journey.png"
                     alt="The Entrepreneur's Journey by Moses B Arthur"
                     fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    quality={72}
                     className="object-cover"
                   />
                 </div>
@@ -146,6 +146,8 @@ export default function Initiatives() {
                     src="/book-seven-universal-currencies.png"
                     alt="The Seven Universal Currencies by Moses B Arthur"
                     fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    quality={72}
                     className="object-cover"
                   />
                 </div>
@@ -159,6 +161,8 @@ export default function Initiatives() {
                     src="/book-systems-thinking.png"
                     alt="Understanding Systems Thinking by Moses B Arthur"
                     fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    quality={72}
                     className="object-cover"
                   />
                 </div>
@@ -172,7 +176,7 @@ export default function Initiatives() {
                 href="tel:+233595320299" 
                 className="inline-flex items-center gap-2 px-6 py-2 rounded-lg bg-primary/10 text-primary font-semibold hover:bg-primary/20 transition-all duration-300"
               >
-                📞 Call: +233 59 532 0299
+                Call: +233 59 532 0299
               </a>
             </div>
           </div>

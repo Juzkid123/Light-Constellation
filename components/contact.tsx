@@ -1,7 +1,3 @@
-"use client"
-
-import { Mail, Linkedin, Instagram, Facebook } from "lucide-react"
-
 export default function Contact() {
   return (
     <section className="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">

@@ -2,25 +2,53 @@
 
 import type React from "react"
 import { useState } from "react"
-import { MessageCircle, Send } from "lucide-react"
+import Image from "next/image"
+import { CheckCircle2, Send } from "lucide-react"
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
     name: "",
     country: "",
     email: "",
+    contact: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
-    setSubmitted(true)
+    setError("")
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: "join-page",
+        }),
+      })
+
+      if (!response.ok) {
+        const result = await response.json().catch(() => null)
+        throw new Error(result?.error || "Your details could not be saved. Please try again.")
+      }
+
+      setSubmitted(true)
+    } catch (submissionError) {
+      setError(submissionError instanceof Error ? submissionError.message : "Your details could not be saved. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleJoinWhatsApp = () => {
@@ -29,10 +57,16 @@ export default function JoinPage() {
   }
 
   return (
-    <div
-      className="relative min-h-screen flex items-center justify-center p-4 bg-cover bg-center"
-      style={{ backgroundImage: "url('/form background.jpg')" }}
-    >
+    <div className="relative min-h-screen flex items-center justify-center p-4 overflow-hidden bg-primary">
+      <Image
+        src="/form-background.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        quality={70}
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative w-full max-w-md rounded-2xl border border-accent/30 bg-background/80 backdrop-blur-xl shadow-2xl">
         {!submitted ? (
@@ -53,7 +87,8 @@ export default function JoinPage() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
                   placeholder="Your full name"
                 />
               </div>
@@ -66,7 +101,8 @@ export default function JoinPage() {
                   value={formData.country}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
                   placeholder="Your country or location"
                 />
               </div>
@@ -79,25 +115,54 @@ export default function JoinPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
                   placeholder="your@email.com"
                 />
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Contact / WhatsApp Number</label>
+                <input
+                  type="tel"
+                  name="contact"
+                  value={formData.contact}
+                  onChange={handleChange}
+                  required
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
+                  placeholder="+233 00 000 0000"
+                />
+              </div>
+
+              {error ? (
+                <p className="rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+                  {error}
+                </p>
+              ) : null}
+
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 mt-6"
+                disabled={isSubmitting}
+                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 mt-6 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                <Send size={18} />
-                Submit & Join WhatsApp
+                {isSubmitting ? (
+                  <>
+                    <span className="h-4 w-4 rounded-full border-2 border-primary-foreground border-t-transparent animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    <Send size={18} />
+                    Submit & Join WhatsApp
+                  </>
+                )}
               </button>
             </form>
           </>
         ) : (
           <div className="p-8 text-center">
-            <div className="mb-4">
-              <span className="text-5xl">✅</span>
-            </div>
+            <CheckCircle2 className="mx-auto mb-4 text-accent" size={52} />
             <h2 className="text-xl font-bold text-primary mb-2">Welcome to Light Constellation Waitlist!</h2>
             <p className="text-muted-foreground mb-4">You've joined our WhatsApp community waitlist group. This is not the official main group - you'll be engaged with soon.</p>
             <p className="text-muted-foreground mb-6">Click below to join the waitlist group:</p>

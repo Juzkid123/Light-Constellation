@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 
 export default function President() {
@@ -27,8 +25,9 @@ export default function President() {
               src="/moses-arthur-portrait.png"
               alt="H.E. Moses B Arthur - Brand MBA President"
               fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              quality={72}
               className="object-cover object-top"
-              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
             <div className="absolute inset-0 border-2 border-accent/30 rounded-2xl animate-glow-pulse" />
@@ -67,6 +66,7 @@ export default function President() {
                 alt="Moses B Arthur Signature"
                 width={300}
                 height={100}
+                quality={75}
                 className="object-contain h-full w-auto filter brightness-0 invert"
               />
             </div>

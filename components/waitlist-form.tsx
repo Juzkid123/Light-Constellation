@@ -14,25 +14,53 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
     name: "",
     email: "",
     phone: "",
-    interest: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [dataStored, setDataStored] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
     setSubmitted(true)
-    setTimeout(() => {
-      // Redirect to WhatsApp
-      const whatsappUrl = `https://wa.me/1234567890?text=Hi%20Light%20Constellation!%20I%20want%20to%20join%20the%20mentorship%20program.%20Name:%20${formData.name}%20Email:%20${formData.email}`
-      window.open(whatsappUrl, "_blank")
-      onClose()
-    }, 1500)
+
+    try {
+      const response = await fetch("/api/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          source: "waitlist-modal",
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Form submission failed")
+      }
+      
+      // After data is stored, show the WhatsApp button
+      setTimeout(() => {
+        setDataStored(true)
+        setSubmitted(false)
+      }, 1000)
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setSubmitted(false)
+      setDataStored(true)
+    }
+  }
+
+  const handleWhatsAppRedirect = () => {
+    const whatsappUrl = `https://wa.me/1234567890?text=Hi%20Light%20Constellation!%20I%20want%20to%20join%20the%20mentorship%20program.%20Name:%20${formData.name}%20Email:%20${formData.email}`
+    window.open(whatsappUrl, "_blank")
+    onClose()
   }
 
   return (
@@ -46,7 +74,7 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
           <X size={24} />
         </button>
 
-        {!submitted ? (
+        {!dataStored ? (
           <>
             {/* Header */}
             <div className="p-8 border-b border-accent/20">
@@ -64,7 +92,8 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={submitted}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-50"
                   placeholder="Your name"
                 />
               </div>
@@ -77,7 +106,8 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={submitted}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-50"
                   placeholder="your@email.com"
                 />
               </div>
@@ -90,34 +120,28 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
+                  disabled={submitted}
+                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-50"
                   placeholder="+1 (555) 000-0000"
                 />
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">I'm interested in</label>
-                <select
-                  name="interest"
-                  value={formData.interest}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors"
-                >
-                  <option value="">Select an option</option>
-                  <option value="student">Student</option>
-                  <option value="entrepreneur">Entrepreneur</option>
-                  <option value="professional">Professional</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 mt-6"
+                disabled={submitted}
+                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={18} />
-                Join WhatsApp Group
+                {submitted ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  <>
+                    <Send size={18} />
+                    Submit
+                  </>
+                )}
               </button>
             </form>
           </>
@@ -126,11 +150,16 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-4 animate-in zoom-in">
               <MessageCircle className="text-primary" size={32} />
             </div>
-            <h3 className="text-xl font-bold text-primary mb-2">Welcome!</h3>
-            <p className="text-muted-foreground mb-4">Redirecting you to our WhatsApp community...</p>
-            <div className="w-full h-1 bg-accent/20 rounded-full overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-primary to-accent animate-pulse" />
-            </div>
+            <h3 className="text-xl font-bold text-primary mb-2">Thank You!</h3>
+            <p className="text-muted-foreground mb-6">Your details have been saved successfully. Now join our WhatsApp community!</p>
+            
+            <button
+              onClick={handleWhatsAppRedirect}
+              className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <Send size={18} />
+              Join WhatsApp Group
+            </button>
           </div>
         )}
       </div>

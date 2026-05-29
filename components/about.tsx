@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 
 export default function About() {
@@ -51,9 +49,11 @@ export default function About() {
           {/* Right Visual */}
           <div className="relative h-96 rounded-2xl overflow-hidden border border-accent/30 bg-gradient-to-br from-primary/10 to-accent/10 animate-in fade-in slide-in-from-right-4 duration-700">
             <Image
-              src="/mba-speaking-event.png"
+              src="/mba-speaking-event.webp"
               alt="Moses B Arthur speaking at Brand MBA event"
               fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              quality={72}
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
