@@ -108,9 +108,7 @@ export default function Initiatives() {
 
             {/* CTA Button */}
             <a
-              href="https://chat.whatsapp.com/ECXDDAqVGkV81ZfWtCms7Y"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/join"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-accent text-background font-bold text-lg hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 hover:scale-105 animate-pulse-subtle"
             >
               <span>Join Waitlist Group</span>

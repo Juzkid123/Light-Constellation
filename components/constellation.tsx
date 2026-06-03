@@ -17,7 +17,7 @@ const members: Member[] = [
     id: 1,
     name: "Mr. Justice Liassidzi",
     role: "Leader",
-    image: "/team-justice-liassidzi.jpeg",
+    image: "/justice.png",
     bio: "Visionary leader guiding our constellation towards transformational excellence and collective success",
   },
   {
