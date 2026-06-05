@@ -72,6 +72,24 @@ export default function President() {
             </div>
           </div>
         </div>
+
+        <div className="mt-12 rounded-2xl border border-accent/30 bg-white/5 p-6 sm:p-8 shadow-lg shadow-black/10">
+          <h3 className="text-2xl sm:text-3xl font-black text-accent mb-4">Moses B. Arthur (MBA)</h3>
+          <div className="space-y-4 text-white/85 leading-relaxed">
+            <p>
+              Moses B. Arthur is a transformational leader whose life&apos;s mission is simple yet profound: to leave fellow man better than he found them.
+            </p>
+            <p>
+              Through his teachings, speaking engagements, and the community that has formed around the BRAND MBA, he has inspired thousands of people to think bigger, dream louder, act bolder, and pursue lives of impact. His work is built on the belief that true success is not measured by what we accumulate, but by the lives we influence and the positive change we leave behind.
+            </p>
+            <p>
+              The MBA community is more than a network - it is a movement of individuals committed to growth, leadership, service, and transformation. Across different backgrounds, industries, and nations, people have found encouragement, direction, and renewed purpose through the values and principles he shares.
+            </p>
+            <p>
+              At the heart of everything Moses does is a commitment to helping people discover their potential, overcome limitations, and become agents of change in their families.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   )
