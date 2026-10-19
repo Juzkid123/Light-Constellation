@@ -28,22 +28,22 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="#team" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/#team" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Our Team
                 </Link>
               </li>
               <li>
-                <Link href="#vision" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/#vision" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Leadership
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/#footer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Connect
                 </Link>
               </li>

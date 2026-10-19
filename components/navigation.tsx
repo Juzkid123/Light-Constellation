@@ -22,7 +22,7 @@ export default function Navigation() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             <Link
-              href="#about"
+              href="/#about"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
               About
@@ -36,21 +36,21 @@ export default function Navigation() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
             </Link>
             <Link
-              href="#team"
+              href="/#team"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
               Our Team
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
             </Link>
             <Link
-              href="#vision"
+              href="/#vision"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
               Vision
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
             </Link>
             <Link
-              href="/contact"
+              href="/#footer"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
               Contact
@@ -70,19 +70,19 @@ export default function Navigation() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-6 space-y-3 animate-fade-in-up">
-            <Link href="#about" className="block text-base font-bold hover:text-accent transition-colors py-2">
+            <Link href="/#about" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
               About
             </Link>
             <Link href="/podcast" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
               Podcast
             </Link>
-            <Link href="#team" className="block text-base font-bold hover:text-accent transition-colors py-2">
+            <Link href="/#team" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
               Our Team
             </Link>
-            <Link href="#vision" className="block text-base font-bold hover:text-accent transition-colors py-2">
+            <Link href="/#vision" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
               Vision
             </Link>
-            <Link href="/contact" className="block text-base font-bold hover:text-accent transition-colors py-2">
+            <Link href="/#footer" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
               Contact
             </Link>
           </div>
