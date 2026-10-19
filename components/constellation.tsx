@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Heart } from "lucide-react"
 
 interface Member {
   id: number
@@ -107,18 +106,7 @@ const members: Member[] = [
 ]
 
 export default function Constellation() {
-  const [liked, setLiked] = useState<Set<number>>(new Set())
   const [brokenImages, setBrokenImages] = useState<Set<number>>(new Set())
-
-  const toggleLike = (id: number) => {
-    const newLiked = new Set(liked)
-    if (newLiked.has(id)) {
-      newLiked.delete(id)
-    } else {
-      newLiked.add(id)
-    }
-    setLiked(newLiked)
-  }
 
   const handleImageError = (id: number) => {
     setBrokenImages((current) => new Set(current).add(id))
@@ -198,20 +186,7 @@ export default function Constellation() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
                   <p className="text-sm font-semibold text-accent mb-3">{member.role}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{member.bio}</p>
-
-                  {/* Like Button */}
-                  <button
-                    onClick={() => toggleLike(member.id)}
-                    className={`w-full py-2 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 ${
-                      liked.has(member.id)
-                        ? "bg-accent/20 text-accent"
-                        : "bg-primary/10 text-primary hover:bg-primary/20"
-                    }`}
-                  >
-                    <Heart size={18} className={liked.has(member.id) ? "fill-current" : ""} />
-                    {liked.has(member.id) ? "Interested" : "Show Interest"}
-                  </button>
+                  <p className="text-sm text-muted-foreground">{member.bio}</p>
                 </div>
               </div>
             </div>

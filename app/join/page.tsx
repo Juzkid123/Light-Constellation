@@ -52,7 +52,7 @@ export default function JoinPage() {
   }
 
   const handleJoinWhatsApp = () => {
-    const whatsappUrl = `https://chat.whatsapp.com/ECXDDAqVGkV81ZfWtCms7Y`
+    const whatsappUrl = "https://chat.whatsapp.com/G6hsEt8otNmIP9k4USRHxk"
     window.open(whatsappUrl, "_blank")
   }
 

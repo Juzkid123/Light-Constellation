@@ -58,7 +58,7 @@ export default function WaitlistForm({ onClose }: WaitlistFormProps) {
   }
 
   const handleWhatsAppRedirect = () => {
-    const whatsappUrl = `https://wa.me/1234567890?text=Hi%20Light%20Constellation!%20I%20want%20to%20join%20the%20mentorship%20program.%20Name:%20${formData.name}%20Email:%20${formData.email}`
+    const whatsappUrl = "https://chat.whatsapp.com/G6hsEt8otNmIP9k4USRHxk"
     window.open(whatsappUrl, "_blank")
     onClose()
   }

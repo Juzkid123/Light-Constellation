@@ -49,8 +49,8 @@ export default function About() {
           {/* Right Visual */}
           <div className="relative h-96 rounded-2xl overflow-hidden border border-accent/30 bg-gradient-to-br from-primary/10 to-accent/10 animate-in fade-in slide-in-from-right-4 duration-700">
             <Image
-              src="/mba-speaking-event.webp"
-              alt="Moses B Arthur speaking at Brand MBA event"
+              src="/constellation-team-photo.jpg"
+              alt="Light Constellation team gathered together at an event"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               quality={72}

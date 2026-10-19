@@ -29,6 +29,13 @@ export default function Navigation() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
             </Link>
             <Link
+              href="/podcast"
+              className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
+            >
+              Podcast
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
+            </Link>
+            <Link
               href="#team"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
@@ -43,7 +50,7 @@ export default function Navigation() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-dark to-accent-light group-hover:w-full transition-all duration-300 animate-shimmer-gold" />
             </Link>
             <Link
-              href="#footer"
+              href="/contact"
               className="text-base font-bold text-foreground hover:text-accent transition-colors duration-300 relative group"
             >
               Contact
@@ -66,13 +73,16 @@ export default function Navigation() {
             <Link href="#about" className="block text-base font-bold hover:text-accent transition-colors py-2">
               About
             </Link>
+            <Link href="/podcast" onClick={() => setIsOpen(false)} className="block text-base font-bold hover:text-accent transition-colors py-2">
+              Podcast
+            </Link>
             <Link href="#team" className="block text-base font-bold hover:text-accent transition-colors py-2">
               Our Team
             </Link>
             <Link href="#vision" className="block text-base font-bold hover:text-accent transition-colors py-2">
               Vision
             </Link>
-            <Link href="#footer" className="block text-base font-bold hover:text-accent transition-colors py-2">
+            <Link href="/contact" className="block text-base font-bold hover:text-accent transition-colors py-2">
               Contact
             </Link>
           </div>

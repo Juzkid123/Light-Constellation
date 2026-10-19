@@ -43,7 +43,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Connect
                 </Link>
               </li>
@@ -54,6 +54,11 @@ export default function Footer() {
           <div className="animate-in fade-in slide-in-from-left-4 duration-700 delay-200">
             <h4 className="font-semibold text-foreground mb-4">Resources</h4>
             <ul className="space-y-2">
+              <li>
+                <Link href="/podcast" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Podcast
+                </Link>
+              </li>
               <li>
                 <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Blog
