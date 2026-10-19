@@ -3,7 +3,8 @@
 import type React from "react"
 import { useState } from "react"
 import Image from "next/image"
-import { CheckCircle2, Send } from "lucide-react"
+import Link from "next/link"
+import { ArrowLeft, CheckCircle2, Send } from "lucide-react"
 
 export default function JoinPage() {
   const [formData, setFormData] = useState({
@@ -57,7 +58,7 @@ export default function JoinPage() {
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4 overflow-hidden bg-primary">
+    <div className="relative flex min-h-svh flex-col items-center justify-center gap-4 bg-primary px-4 py-6 sm:gap-3 sm:py-6 lg:py-4">
       <Image
         src="/form-background.webp"
         alt=""
@@ -68,19 +69,26 @@ export default function JoinPage() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative w-full max-w-md rounded-2xl border border-accent/30 bg-background/80 backdrop-blur-xl shadow-2xl">
+      <div className="relative z-10 w-full max-w-md">
+        <Link
+          href="/"
+          className="mb-3 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/25 bg-black/30 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+        >
+          <ArrowLeft size={17} /> Back to home
+        </Link>
+      <div className="w-full rounded-2xl border border-accent/30 bg-background/90 shadow-2xl backdrop-blur-xl">
         {!submitted ? (
           <>
             {/* Header */}
-            <div className="p-8 border-b border-accent/20">
+            <div className="border-b border-accent/20 p-5 sm:p-6 lg:p-5">
               <h1 className="text-3xl font-bold text-primary mb-2">Join Us</h1>
               <p className="text-sm text-muted-foreground">Become part of the Light Constellation community</p>
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-8 space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 p-5 sm:space-y-4 sm:p-6 lg:space-y-3 lg:p-5">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                <label className="mb-1.5 block text-sm font-medium text-foreground sm:mb-2">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -88,13 +96,13 @@ export default function JoinPage() {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
+                  className="w-full rounded-lg border border-accent/30 bg-background/50 px-4 py-2.5 transition-colors focus:border-primary focus:outline-none disabled:opacity-60 lg:py-1.5"
                   placeholder="Your full name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Country/Location</label>
+                <label className="mb-1.5 block text-sm font-medium text-foreground sm:mb-2">Country/Location</label>
                 <input
                   type="text"
                   name="country"
@@ -102,13 +110,13 @@ export default function JoinPage() {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
+                  className="w-full rounded-lg border border-accent/30 bg-background/50 px-4 py-2.5 transition-colors focus:border-primary focus:outline-none disabled:opacity-60 lg:py-1.5"
                   placeholder="Your country or location"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                <label className="mb-1.5 block text-sm font-medium text-foreground sm:mb-2">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -116,13 +124,13 @@ export default function JoinPage() {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
+                  className="w-full rounded-lg border border-accent/30 bg-background/50 px-4 py-2.5 transition-colors focus:border-primary focus:outline-none disabled:opacity-60 lg:py-1.5"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Contact / WhatsApp Number</label>
+                <label className="mb-1.5 block text-sm font-medium text-foreground sm:mb-2">Contact / WhatsApp Number</label>
                 <input
                   type="tel"
                   name="contact"
@@ -130,7 +138,7 @@ export default function JoinPage() {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full px-4 py-2 rounded-lg border border-accent/30 bg-background/50 focus:border-primary focus:outline-none transition-colors disabled:opacity-60"
+                  className="w-full rounded-lg border border-accent/30 bg-background/50 px-4 py-2.5 transition-colors focus:border-primary focus:outline-none disabled:opacity-60 lg:py-1.5"
                   placeholder="+233 00 000 0000"
                 />
               </div>
@@ -144,7 +152,7 @@ export default function JoinPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 flex items-center justify-center gap-2 mt-6 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent py-3 font-semibold text-primary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-primary/50 disabled:cursor-not-allowed disabled:opacity-60 sm:mt-5 lg:mt-3"
               >
                 {isSubmitting ? (
                   <>
@@ -161,7 +169,7 @@ export default function JoinPage() {
             </form>
           </>
         ) : (
-          <div className="p-8 text-center">
+          <div className="p-5 text-center sm:p-8">
             <CheckCircle2 className="mx-auto mb-4 text-accent" size={52} />
             <h2 className="text-xl font-bold text-primary mb-2">Welcome to Light Constellation Waitlist!</h2>
             <p className="text-muted-foreground mb-4">You've joined our WhatsApp community waitlist group. This is not the official main group - you'll be engaged with soon.</p>
@@ -180,6 +188,7 @@ export default function JoinPage() {
             </button>
           </div>
         )}
+      </div>
       </div>
     </div>
   )
