@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowUpRight, Headphones } from "lucide-react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
@@ -45,7 +46,11 @@ export default function PodcastPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/25 via-transparent to-transparent" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1fr_0.9fr] lg:px-8">
           <div className="max-w-2xl">
-            <p className="mb-3 text-2xl font-black uppercase tracking-[0.18em] text-accent-light sm:text-3xl">Thoughts Become Things Podcast</p>
+            <p className="mb-5 text-5xl font-black uppercase leading-[1.02] tracking-tight text-accent-light sm:text-7xl">
+              <span className="block">Thoughts</span>
+              <span className="mt-1 block text-[#e87500]">Become Things</span>
+              <span className="mt-3 block text-3xl font-semibold normal-case italic tracking-normal text-accent-light sm:text-4xl [font-family:'Segoe_Print','Bradley_Hand',cursive]">Podcast</span>
+            </p>
             <h1 className="text-4xl font-black leading-tight sm:text-6xl">Ideas that shape the life you build.</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
               Join Moses B. Arthur for conversations and reflections on mindset, business, personal growth, spirituality, and the power of thought.
@@ -62,15 +67,14 @@ export default function PodcastPage() {
               </a>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-white/15 bg-black shadow-2xl shadow-black/40">
-            <iframe
-              title="Thoughts Become Things podcast on Spotify"
-              src="https://open.spotify.com/embed/show/4bQotVzTmuP8v2FdTpcvK2?utm_source=generator"
-              width="100%"
-              height="500"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              className="block"
+          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl border border-white/15 bg-black shadow-2xl shadow-black/40">
+            <Image
+              src="/thoughts-become-things-cover.jpg"
+              alt="Thoughts Become Things Podcast cover featuring Moses B. Arthur"
+              fill
+              sizes="(min-width: 1024px) 448px, 100vw"
+              priority
+              className="object-cover"
             />
           </div>
         </div>

@@ -56,7 +56,7 @@ export default function About() {
               quality={72}
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/75 via-background/25 to-transparent" />
           </div>
         </div>
       </div>
